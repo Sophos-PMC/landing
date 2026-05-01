@@ -622,7 +622,7 @@ const Testimonials = () => (
           { name: "Celia V.", role: "Diseño, ansiedad", text: "El Pomodoro con música de fondo cambió todo. Y lo de las ligas con mis amigos… por primera vez estudiar me da motivación y no culpa.", stars: 5, avatar: "👩‍🎓" },
           { name: "Camilo G.", role: "Ing. Industrial", text: "Tengo tiempo literalmente contado. Sophos automatiza mis bloques de estudio. Recuperé 2 horas diarias que antes perdía organizándome.", stars: 5, avatar: "👨‍💼" },
         ].map((t, i) => (
-          <div key={i} className="testimonial-card card-hover">
+          <div key={i} className="testimonial-card">
             <div style={{ display: "flex", gap: 4, marginBottom: 16 }}>{[...Array(t.stars)].map((_, j) => <span key={j} style={{ color: "#FFD700", fontSize: 14 }}>★</span>)}</div>
             <p style={{ fontSize: 14, color: COLORS.textMuted, lineHeight: 1.7, marginBottom: 20, position: "relative", zIndex: 1 }}>{t.text}</p>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -651,7 +651,7 @@ const Pricing = () => (
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }} className="section-reveal">
         {[
           { name: "Básico", price: "$16,000 USD", period: "/año", students: "Hasta 1,500 estudiantes", color: COLORS.teal, features: ["5 cuentas de asesor", "Sincronización institucional", "Soporte estándar"], cta: "Solicitar demo", highlight: false },
-          { name: "Universitario", price: "$38,000 USD", period: "/año", students: "Hasta 5,000 estudiantes", color: COLORS.purple, features: ["20 cuentas de asesor", "Dashboard de carga real", "Soporte dedicado 24/7"], cta: "Hablar con ventas", highlight: true },
+          { name: "Universitario", price: "$38,000 USD", period: "/año", students: "Hasta 15,000 estudiantes", color: COLORS.purple, features: ["20 cuentas de asesor", "Dashboard de carga real", "Soporte dedicado 24/7"], cta: "Hablar con ventas", highlight: true },
         ].map((p, i) => (
           <div key={i} className="card-hover" style={{ background: p.highlight ? `linear-gradient(135deg, rgba(181,50,217,0.15), rgba(108,255,253,0.06))` : COLORS.bgCard, borderRadius: 24, padding: 32, border: p.highlight ? `2px solid ${COLORS.purple}` : `1px solid rgba(255,255,255,0.07)`, position: "relative" }}>
             {p.highlight && <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: COLORS.purple, borderRadius: 100, padding: "4px 16px", fontSize: 12, fontWeight: 700, whiteSpace: "nowrap" }}>⭐ Más popular</div>}
