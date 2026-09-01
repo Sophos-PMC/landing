@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent } from "firebase/analytics";
-// Importaciones de Firestore para la base de datos
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { logEvent } from "firebase/analytics";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { analytics, db } from "../firebase";
 
 // Importación de imágenes
 import miniLogo from "../assets/miniLogo.png";
@@ -13,30 +12,6 @@ import videoStats from "../assets/stats.mp4";
 import videoLeagues from "../assets/leagues.mp4";
 import videoPomodoro from "../assets/pomodoro.mp4";
 import videoTasks from "../assets/tasks.mp4";
-
-// ── Configuración de Firebase Analytics y Base de Datos ──────────────────────
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_APIKEY,
-  authDomain: import.meta.env.VITE_AUTHDOMAIN,
-  databaseURL: import.meta.env.VITE_DATABASEURL,
-  projectId: import.meta.env.VITE_PROJECTID,
-  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
-  appId: import.meta.env.VITE_APPID,
-  measurementId: import.meta.env.VITE_MEASUREMENTID
-};
-
-// Inicialización segura de Firebase
-let analytics = null;
-let db = null;
-
-try {
-  const app = initializeApp(firebaseConfig);
-  analytics = getAnalytics(app);
-  db = getFirestore(app); // Inicializamos Firestore
-} catch (error) {
-  console.error("Firebase no pudo inicializarse:", error);
-}
 
 // Función para registrar clics genéricos en botones
 const trackCTAClick = (buttonName) => {
